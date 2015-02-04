@@ -41,8 +41,14 @@ def main():
         report("Ignoring : " + SSH_ORIGINAL_COMMAND)
         return 1
 
-    command = SSH_ORIGINAL_COMMAND.split()
-    rv = subprocess.call(command)
+    report("Running : " + SSH_ORIGINAL_COMMAND)
+
+    if get(config, "DEFAULT", "shell", "0") == "1":
+        shell = True
+    else:
+        shell = False
+        command = command.split(" ")
+    rv = subprocess.call(command, shell=shell)
     return rv
 
 if __name__ == "__main__":
