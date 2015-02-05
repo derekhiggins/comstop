@@ -1,0 +1,12 @@
+[DEFAULT]
+
+# Only report, don't actually execute command
+# run_commands=0
+
+# Should the command be run through the shell e.g.
+# to make use of | or ;
+# shell=0
+
+# A list of commands allowed to run over ssh
+commands:
+ echo Hello World

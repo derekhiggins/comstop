@@ -1,0 +1,20 @@
+
+A utility to configure allow specific commands to be run over ssh with a configured ssh key.
+
+
+An example setup to allow ssh clients to run two specific command only
+
+== authorized_keys ==
+no-port-forwarding,no-x11-forwarding,no-agent-forwarding,command="/path/to/comstop" ssh-rsa <SSHKEY> jenkins@fido
+
+== ~/.comstop (See etc/comstop.example for a explaination of the commands) ==
+[DEFAULT]
+run_commands=1
+shell=1
+commands:
+ sudo rsync --server --sender -vlogDtprRe.iLsfx . /etc /var/www
+ mysqldump --all-databases | gzip
+
+== commands that can now be run from local the machine ==
+rsync --delete -vRa --rsync-path="sudo rsync" derekh@1.2.3.4:/etc :/var/www /mnt/disk1/backup
+ssh derekh@1.2.3.4 mysqldump --all-databases \| gzip | gunzip > /mnt/disk1/backup/database.sql
