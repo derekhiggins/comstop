@@ -11,7 +11,7 @@
 # logfile=
 
 # Run all command regardless of matching result
-# devmode=1
+# devmode=0
 
 # A list of commands allowed to run over ssh
 commands:
