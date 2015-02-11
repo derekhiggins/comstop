@@ -7,6 +7,12 @@
 # to make use of | or ;
 # shell=0
 
+# Log to this file instead of stderr
+# logfile=
+
+# Run all command regardless of matching result
+# devmode=1
+
 # A list of commands allowed to run over ssh
 commands:
  echo Hello World
